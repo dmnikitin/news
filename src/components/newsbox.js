@@ -58,8 +58,7 @@ export default class NewsBox extends Component {
     componentWillUnmount = () => window.removeEventListener('scroll', this.onScroll, false);
 
     render() {
-        console.log("this.props.value", this.props.value)
-        console.log("pathname", pathname)
+
         let banner, heading;
         switch (this.props.value || pathname) {
             case "top":
