@@ -1,0 +1,330 @@
+$imgpath: "../data";
+
+* {
+    height: 100%;
+    outline: 0 !important;
+    scroll-behavior: smooth;
+
+}
+
+
+.main {
+
+    h2 {
+        padding-top: 50px;
+    }
+
+    .newsbox {
+
+        display: grid;
+        grid-template-rows: 200px 50px 1fr;
+
+        h1 {
+            font-family: 'Indie Flower', cursive;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        @for $i from 0 through 4 {
+
+            .source-banner-#{$i} {
+                width: 100%;
+
+
+                img {
+                    width: 100%;
+
+                    height: 100%;
+                    background: url(#{$imgpath}/#{$i}.jpg) no-repeat;
+                    background-size: 100% 100%;
+
+                    @media (min-width: 1600px) {
+                        background-size: 100% auto;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .source-box {
+        display: grid;
+        overflow: hidden;
+        position: relative;
+        width: 70%;
+        height: 70%;
+        margin: 0 auto;
+        margin-top: 50px;
+        vertical-align: middle;
+        grid-template-columns: 1fr;
+    }
+
+    @for $i from 0 through 4 {
+
+        .source-instance-#{$i} {
+            overflow: hidden;
+
+            position: relative;
+
+            h2 {
+                position: absolute !important;
+                z-index: 10;
+                left: 20px;
+                width: max-content;
+                height: 30px;
+                margin: 0;
+
+                padding: 0;
+                opacity: 1 !important;
+                color: white;
+
+                font-family: "Indie Flower";
+                font-size: 32px;
+            }
+
+            .bg-image-blur,
+            .bg-image {
+
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .bg-image-blur {
+                filter: blur(20px);
+            }
+
+            img {
+
+
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0.5;
+                background: url(#{$imgpath}/#{$i}.jpg) no-repeat;
+                background-position: top center;
+                background-size: cover;
+                transition: all 4s ease-out;
+
+                &:hover {
+                    opacity: 0.8;
+                    transform: scale(1.2);
+
+
+                }
+            }
+        }
+
+    }
+
+    .articles-footer {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 30px;
+        padding-top: 10px;
+        background: #D3D3D3;
+        text-align: center;
+    }
+
+    .list {
+        display: grid;
+        height: 100%;
+        margin: 0 auto;
+        padding-top: 50px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-column-gap: 1em;
+        grid-auto-rows: min-content max-content auto;
+
+        img {
+            width: 100%;
+            // min-height: 500px !important;
+            background-size: 100% auto;
+
+            @media (max-width: 400px) {
+                min-height: 200px;
+            }
+
+            @media (min-width: 400px) and (max-width: 550px) {
+                min-height: 300px;
+            }
+
+            @media (min-width: 550px) and (max-width: 700px) {
+                min-height: 400px;
+            }
+
+            @media (min-width: 700px) and (max-width: 800px) {
+                min-height: 200px;
+            }
+
+            @media (min-width: 850px) and (max-width: 900px) {
+                min-height: 250px;
+            }
+
+            @media (min-width: 900px) and (max-width: 1000px) {
+                min-height: 300px;
+            }
+
+            @media (min-width: 1150px) and (max-width: 1300px) {
+                min-height: 250px;
+            }
+
+        }
+    }
+
+
+    .data-loading {
+        display: block;
+        position: fixed;
+        bottom: 50px;
+        left: 47%;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        font-size: 3em;
+    }
+
+}
+
+.fa {
+    color: black;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+form {
+    width: 70%;
+    height: 50px;
+    margin: 0 auto;
+    border: 1px solid;
+}
+
+
+
+
+
+@media (max-width: 700px) {
+
+    .main {
+        .newsbox {
+
+            display: grid;
+            grid-template-rows: 100px 50px 1fr;
+
+            img {
+                height: 100px !important;
+            }
+
+            .list {
+                padding-right: 2%;
+                padding-left: 2%;
+                grid-template-columns: 1fr;
+
+
+            }
+
+        }
+    }
+
+}
+
+@media (min-width:700px) and (max-width: 1000px) {
+
+    .main {
+        .newsbox {
+            img {
+                height: 200px;
+            }
+
+            .list {
+                grid-template-columns: 1fr 1fr;
+
+
+            }
+
+        }
+    }
+}
+
+
+@media (min-width: 1000px) and (max-width: 1300px) {
+
+    .main {
+        .newsbox {
+            img {
+                height: 200px;
+            }
+
+            .list {
+                grid-template-columns: 1fr 1fr 1fr;
+
+
+            }
+
+        }
+    }
+}
+
+
+@media (min-width: 1300px) and (max-width: 1600px) {
+
+    .main {
+        .source-box {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .source-instance-0 {
+            grid-area: 1 / 1 / span 1 / span 2;
+        }
+
+        .newsbox {
+            img {
+                height: 200px;
+            }
+
+            .list {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+
+
+            }
+
+        }
+    }
+}
+
+@media (min-width: 1600px) {
+
+    .main {
+        .source-box {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .source-instance-0 {
+            grid-area: 1 / 1 / span 1 / span 2;
+        }
+
+        .newsbox {
+            img {
+                height: 200px;
+            }
+
+            .list {
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+                img {
+                    min-height: 200px !important;
+
+                }
+            }
+
+        }
+    }
+
+}

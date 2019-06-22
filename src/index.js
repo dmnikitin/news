@@ -1,12 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import './sass/styles.scss';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NewsBox from './components/newsbox.js';
+import SourcesBox from './components/sourcesbox.js';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+class App extends Component {
+
+    state = { selected: "" }
+
+    setTopic = (value) => this.setState({ selected: value })
+
+    render() {
+
+        let path = `/${this.state.selected}`
+        return (
+            <Router>
+		    	<div className="main">
+					<Switch >
+			          <Route exact path="/" render={() => <SourcesBox value={this.state.selected} setTopic={this.setTopic}/> } />
+			          <Route path={path} render={() => <NewsBox value={this.state.selected} setTopic={this.setTopic}/>} />
+			        </Switch>
+				</div>
+			</Router>
+        );
+    }
+}
+
+
+render(<App />, document.getElementById('root'));
+
+
+     
+
