@@ -38,7 +38,7 @@ export default class NewsBox extends Component {
                 }
             };
 
-            fetch(`http://localhost:8080/${link}`, myInit)
+            fetch(`${link}`, myInit)
                 .then(response => {
                     if (response.ok) {
                         return response.clone().json();
