@@ -1,10 +1,12 @@
 const express = require('express');
 const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
-const API_KEY = process.env.API_KEY;
-const port = process.env.PORT || 8080;
 const cors = require('cors');
 const app = express();
+const dotenv = require('dotenv');
+dotenv.config();
+const port = process.env.PORT || 8080;
+const API_KEY = process.env['API_KEY'];
 let url;
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
