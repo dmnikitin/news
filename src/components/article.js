@@ -15,23 +15,25 @@ const styles = {
         maxWidth: "100%",
         height: "auto",
         marginBottom: 30,
-        display: "grid",
         backgroundSize: "cover",
         backgroundPosition: 'center center',
-        gridTemplateRows: " auto  auto 55px"
-    },
-    media: {
+        display: "flex",
+        flexDirection: 'column',
 
     },
     content: {
         display: "grid",
-        gridTemplateRows: "minmax(min-content, 100px) minmax(min-content, 100px)",
-
+        gridTemplateRows: "minmax(min-content, 100px) minmax(min-content, 50px) minmax(min-content, 100px)",
     },
     buttons: {
         color: "black",
-        fontSize: 18
-
+        fontSize: 18,
+    },
+    span: {
+        display: "inline-flex",
+        alignItems: "center",
+        fontStyle: 'italic',
+        fontSize: "15px"
     }
 };
 
@@ -41,11 +43,14 @@ const Article = props => {
     return (
         <Card className={classes.card}>
 
-          <img src={props.item.urlToImage} />
+          <img src={props.item.urlToImage} alt=""/>
 
           <CardContent  className={classes.content}>
             <Typography className={classes.heading} gutterBottom variant="headline" component="h2">
                {props.item.title}
+            </Typography>
+             <Typography className={classes.span} component="span">
+               by {props.item.source.name}
             </Typography>
             <Typography component="p">
              {props.item.description}

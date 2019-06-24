@@ -3,9 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 import Footer from './footer.js';
 import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
-
-//путаница с with styles i withrouter
 
 const instances = ["top", "belarus-minsk", "sports-nhl-nba-soccer", "entertainment-trends", "technology-science"]
 const headers = ["top news.", "belarus.", "sports.", "trends.", "tech."]
@@ -43,11 +40,10 @@ class SourcesBox extends Component {
     setTopic = (value) => this.props.setTopic(value)
 
     render() {
-        // const { classes } = this.props;
 
         return (
             <React.Fragment >
-            <h2 style={styles.h2}> Get the articles by selected topics! </h2>
+            <h2 style={styles.h2}> Get the latest articles by selected topics! </h2>
                 <div className="source-box" >
                     {
                         instances.map ( (e, index) => {

@@ -38,7 +38,7 @@ export default class NewsBox extends Component {
                 }
             };
 
-            fetch(`${link}`, myInit)
+            fetch(`/${link}`, myInit)
                 .then(response => {
                     if (response.ok) {
                         return response.clone().json();
@@ -88,8 +88,8 @@ export default class NewsBox extends Component {
 
         return (
             <div className="newsbox">
-                <div className={banner}><img alt=""/></div>
-                <h1>{heading}</h1>
+                <div className={banner}><img alt=""/><h1>{heading}</h1></div>
+
                 <ArticlesList list={this.state.articles} />
                 {
                     this.state.isLoading &&
