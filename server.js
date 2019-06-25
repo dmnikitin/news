@@ -3,10 +3,15 @@ const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 const app = express();
 dotenv.config();
 const API_KEY = process.env['API_KEY'];
 const port = process.env.PORT || 8080;
+
+const staticFiles = express.static(path.join(__dirname, './client/build'))
+app.use(staticFiles)
+
 let url;
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
