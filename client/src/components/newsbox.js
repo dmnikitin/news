@@ -37,7 +37,7 @@ export default class NewsBox extends Component {
                     'X-Requested-With': 'XMLHttpRequest'
                 }
             };
-
+            console.log(link)
             fetch(`/${link}`, myInit)
                 .then(response => {
                     if (response.ok) {
