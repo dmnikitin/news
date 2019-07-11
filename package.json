@@ -14,9 +14,10 @@
     ]
   },
   "scripts": {
-    "start": "webpack --mode development & nodemon public/server.js",
-    "heroku-postbuild": "webpack -p",
+    "start": "node public/server.js",
+    "heroku-postbuild": "webpack -p & node public/server.js",
     "dev": "concurrently \"webpack --watch\" \"nodemon public/server.js\"",
+    "dev2": "webpack --mode development & nodemon public/server.js",
     "build": "webpack --mode production"
   },
   "keywords": [],
