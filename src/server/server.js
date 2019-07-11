@@ -2,7 +2,6 @@ import express from 'express';
 import fetch from 'node-fetch';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
@@ -12,11 +11,8 @@ import NewsBox from '../shared/components/newsbox';
 const app = express();
 app.use(cors());
 app.use(express.static('public'));
-dotenv.config();
 app.use(bodyParser.urlencoded({ extended: true }));
 const port = process.env.PORT || 8080;
-const API_KEY = process.env["API_KEY"]
-// const [API_KEY] = process.env;
 let url;
 
 app.get('/', (req, res) => {
@@ -41,7 +37,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:link', (req, res) => {
-    // const { link } = req.params;
     const link = req.params.link;
     const markup = renderToString(
         <StaticRouter location={req.url}>
