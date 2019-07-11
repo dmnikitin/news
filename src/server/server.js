@@ -15,7 +15,8 @@ app.use(express.static('public'));
 dotenv.config();
 app.use(bodyParser.urlencoded({ extended: true }));
 const port = process.env.PORT || 8080;
-const [API_KEY] = process.env;
+const API_KEY = process.env["API_KEY"]
+// const [API_KEY] = process.env;
 let url;
 
 app.get('/', (req, res) => {
@@ -40,7 +41,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:link', (req, res) => {
-    const { link } = req.params;
+    // const { link } = req.params;
+    const link = req.params.link;
     const markup = renderToString(
         <StaticRouter location={req.url}>
             <NewsBox value={link} />
