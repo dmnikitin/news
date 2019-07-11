@@ -1,1 +1,0 @@
-With this app you can get the latest news from the major sources via NewsAPI.org
