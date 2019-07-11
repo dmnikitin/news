@@ -2,6 +2,7 @@ import express from 'express';
 import fetch from 'node-fetch';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
@@ -12,7 +13,8 @@ const app = express();
 app.use(cors());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
-const API_KEY = process.env['API_KEY'];
+
+const API_KEY = dotenv.config().parsed.API_KEY;
 const port = process.env.PORT || 8080;
 let url;
 
