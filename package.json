@@ -13,9 +13,13 @@
       ]
     ]
   },
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.9.0"
+  },
   "scripts": {
     "start": "node public/server.js",
-    "heroku-postbuild": "webpack -p & node public/server.js",
+    "heroku-postbuild": "webpack -p",
     "dev": "concurrently \"webpack --watch\" \"nodemon public/server.js\"",
     "dev2": "webpack --mode development & nodemon public/server.js",
     "build": "webpack --mode production"
