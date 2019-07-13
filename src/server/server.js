@@ -15,7 +15,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const API_KEY = dotenv.config().parsed.API_KEY;
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 5000;
 let url;
 
 app.get('/', (req, res) => {
