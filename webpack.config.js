@@ -43,6 +43,8 @@ const serverConfig = {
         filename: 'server.js',
         publicPath: '/',
         globalObject: 'typeof self !== \'undefined\' ? self : this',
+        library: 'ssr',
+        libraryTarget: 'umd',
     },
     module: {
         rules: [
