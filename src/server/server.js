@@ -14,11 +14,12 @@ app.use(cors());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// const API_KEY = dotenv.config().parsed.API_KEY;
+const API_KEY = dotenv.config().parsed.API_KEY;
 const host = '0.0.0.0';
 const port = process.env.PORT || 5000;
-const API_KEY = process.env.API_KEY
 let url;
+
+app.listen(port, host, () => console.log(`Listening on http://localhost:${port}/`));
 
 app.get('/', (req, res) => {
     const markup = renderToString(<App />);
@@ -82,5 +83,3 @@ app.post(/.*/, (req, res) => {
         }, networkError => console.log(networkError.message))
         .then(jsonResponse => res.json(jsonResponse));
 });
-
-app.listen(port, host, () => console.log(`Listening on http://localhost:${port}/`));
