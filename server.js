@@ -1,8 +1,8 @@
 const express = require('express');
 const fetch = require('node-fetch');
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const dotenv = require("dotenv");
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const dotenv = require('dotenv');
 
 const app = express();
 app.use(cors());
@@ -11,14 +11,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const API_KEY = dotenv.config().parsed.API_KEY;
 const host = '0.0.0.0';
-const port = dotenv.config().parsed.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 let url;
 
 
 import * as ssr from './public/server.js';
 
 
-app.listen(port, host, () => console.log(`Listening on http://localhost:${port}/`));
+app.listen(PORT, host, () => console.log(`Listening on http://localhost:${PORT}/`));
 
 app.get('/', (req, res) => {
     const markup = ssr.render('app')
