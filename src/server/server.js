@@ -15,6 +15,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const API_KEY = dotenv.config().parsed.API_KEY;
+const host = '0.0.0.0';
 const port = process.env.PORT || 5000;
 let url;
 
@@ -81,4 +82,4 @@ app.post(/.*/, (req, res) => {
         .then(jsonResponse => res.json(jsonResponse));
 });
 
-app.listen(port, () => console.log(`Listening on http://localhost:${port}/`));
+app.listen(port, host, () => console.log(`Listening on http://localhost:${port}/`));
