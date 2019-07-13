@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "node public/server.js",
-    "heroku-postbuild": "webpack -p",
+    "postinstall": "npm run build",
     "dev": "concurrently \"webpack --watch\" \"nodemon public/server.js\"",
     "dev2": "webpack --mode development & nodemon public/server.js",
     "build": "webpack --mode production"
