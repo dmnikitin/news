@@ -14,9 +14,10 @@ app.use(cors());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const API_KEY = dotenv.config().parsed.API_KEY;
+// const API_KEY = dotenv.config().parsed.API_KEY;
 const host = '0.0.0.0';
 const port = process.env.PORT || 5000;
+const API_KEY = process.env.API_KEY
 let url;
 
 app.get('/', (req, res) => {
