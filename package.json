@@ -18,9 +18,10 @@
     "npm": "6.9.0"
   },
   "scripts": {
-    "start": "node public/server.js",
-    "dev": "concurrently \"webpack --watch\" \"nodemon public/server.js\"",
-    "dev2": "webpack --mode development & nodemon public/server.js",
+    "start": "node -r esm  server.js",
+    "heroku-postbuild": "webpack -p",
+    "dev": "concurrently \"webpack --watch\" \"nodemon -r esm server.js\"",
+    "dev2": "webpack --mode development & nodemon -r esm server.js",
     "build": "webpack --mode production"
   },
   "keywords": [],
@@ -35,6 +36,7 @@
     "concurrently": "^4.1.1",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "file-loader": "^4.0.0",
     "node-fetch": "^2.6.0",
