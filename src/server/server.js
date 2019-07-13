@@ -82,4 +82,4 @@ app.post(/.*/, (req, res) => {
         .then(jsonResponse => res.json(jsonResponse));
 });
 
-app.listen(port, host, () => console.log(`Listening on http://localhost:${port}/`));
+app.listen(process.env.PORT || 5000, '0.0.0.0', () => console.log(`Listening on http://localhost:${port}/`));
