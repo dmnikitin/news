@@ -13,10 +13,15 @@
       ]
     ]
   },
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.9.0"
+  },
   "scripts": {
-    "start": "webpack --mode development & nodemon public/server.js",
+    "start": "node -r esm  server.js",
     "heroku-postbuild": "webpack -p",
-    "dev": "concurrently \"webpack --watch\" \"nodemon public/server.js\"",
+    "dev": "concurrently \"webpack --watch\" \"nodemon -r esm server.js\"",
+    "dev2": "webpack --mode development & nodemon -r esm server.js",
     "build": "webpack --mode production"
   },
   "keywords": [],
@@ -31,11 +36,12 @@
     "concurrently": "^4.1.1",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "file-loader": "^4.0.0",
     "node-fetch": "^2.6.0",
     "nodemon": "^1.19.1",
-    "npm": "^6.10.0",
+    "npm": "^6.10.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -44,9 +50,9 @@
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.0",
+    "@babel/core": "^7.5.4",
     "@babel/plugin-proposal-class-properties": "^7.5.0",
-    "@babel/preset-env": "^7.5.0",
+    "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.2",
     "copy-webpack-plugin": "^5.0.3",
@@ -61,7 +67,7 @@
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "webpack": "^4.35.2",
+    "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
   },
