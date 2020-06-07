@@ -17,10 +17,7 @@ export default function unmountHOC(WrappedComponent) {
 
         render() {
             const { mounted } = this.state;
-            if (mounted) {
-                return <WrappedComponent {...this.props} />;
-            }
-            return null;
+            return mounted ? <WrappedComponent {...this.props} /> : null;
         }
     };
 }

@@ -5,7 +5,7 @@ import Article from './article';
 
 const List = ({ list }) => (
     <div className="list">
-      {list.map(item => <Article key={item.publishedAt} item={item} />)}
+      {list.map(item => <Article key={item.publishedAt + Math.random()} item={item} />)}
       <Footer />
     </div>
 );

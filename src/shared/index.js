@@ -1,26 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { StaticRouter } from 'react-router-dom';
+import { hydrate } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import App from './app';
 import NewsBox from './components/newsbox';
-import SourcesBox from './components/sourcesbox';
-import './sass/styles.scss';
 
-export default function App(props) {
-    const { selected } = props;
-    let path;
-    if (selected) path = `/${selected}`;
-    return (
-        <StaticRouter>
-                    <div className="main">
-                      { !path
-                        ? <SourcesBox />
-                        : <NewsBox value={selected} />
-                       }
-                    </div>
-        </StaticRouter>
-    );
-}
+const state = window.LINK ? window.LINK.link : null;
+delete window.LINK;
 
-App.propTypes = {
-    selected: PropTypes.string,
-};
+const content = (state === null)
+    ? <BrowserRouter><App /></BrowserRouter>
+    : <BrowserRouter><NewsBox value={state} /></BrowserRouter>;
+
+hydrate(content, document.getElementById('App'));
