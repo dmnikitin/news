@@ -8,56 +8,23 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import Icon from '@material-ui/core/Icon';
+import styles from '../custom-styles/articleStyles';
 
-const styles = {
-    card: {
-        maxWidth: '100%',
-        height: 'auto',
-        marginBottom: 30,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
-        display: 'inline-block',
-
-    },
-    heading: {
-        overflow: 'hidden',
-    },
-    buttons: {
-        color: 'black',
-        fontSize: 18,
-        minHeight: '40px',
-        maxHeight: '40px',
-    },
-    span: {
-        alignItems: 'center',
-        fontStyle: 'italic',
-        fontSize: '15px',
-    },
-    p: {
-        marginTop: '10px',
-    },
-    content: {
-        display: 'grid',
-    },
-};
-
-function Article(props) {
-    const { classes, item } = props;
+function Article({ classes, item }) {
     const share = `https://twitter.com/intent/tweet?text=${item.title}`;
-
     return (
-        <Card className={classes.card}>
+        <Card className={`${classes.card} item`}>
          <img src={item.urlToImage} alt="" />
-         <CardContent>
+         <CardContent className={classes.content}>
            <Typography className={classes.heading} gutterBottom variant="headline" component="h2">
-              {item.title}
+              {item.title.length > 50 ? `${item.title.slice(0, 50)}...` : item.title}
            </Typography>
            <Typography className={classes.span} component="span">
               by
               {item.source.name}
            </Typography>
            <Typography className={classes.p} component="p">
-            {item.description}
+            {item.description.length > 150 ? `${item.description.slice(0, 150)}...` : item.description}
            </Typography>
          </CardContent>
          <CardActions className={classes.buttons}>
