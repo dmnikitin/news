@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 const browserConfig = {
-    entry: './src/browser/index.js',
+    entry: './src/shared/index.js',
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: 'bundle.js',
@@ -35,7 +35,7 @@ const browserConfig = {
 };
 
 const serverConfig = {
-    entry: './src/server/server.js',
+    entry: './src/render.js',
     target: 'node',
     externals: [nodeExternals()],
     output: {

@@ -24,10 +24,11 @@
     ],
     "rules": {
         "indent": 0,
-        "no-console": 1,
+        "no-console": 0,
         "react/jsx-indent": 0,
         "react/jsx-filename-extension": 0,
         "react/no-unused-state": 1,
-        "react/no-unused-prop-types": 1
+        "react/no-unused-prop-types": 1,
+        "linebreak-style": 0
     }
 }
