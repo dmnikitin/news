@@ -12,6 +12,10 @@ class NewsBox extends Component {
         articles: [],
     }
 
+    static defaultProps = {
+        value: String,
+    }
+
     static propTypes = {
         value: PropTypes.string,
     }
@@ -25,43 +29,39 @@ class NewsBox extends Component {
         if (scrolledToBottom) this.loadData();
     }
 
-    loadData = () => {
+    loadData = async () => {
         const { value } = this.props;
         const { page, articles } = this.state;
+        const myInit = {
+          method: 'POST',
+          body: `value=${value}&page=${page}`,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-Requested-With': 'XMLHttpRequest',
+          },
+        };
         this.setState({ isLoading: true });
-        setTimeout(() => {
-            const myInit = {
-                method: 'POST',
-                body: `value=${value}&page=${page}`,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'X-Requested-With': 'XMLHttpRequest',
-                },
-            };
-
-            fetch(`/${value || pathname}`, myInit)
-                .then((response) => {
-                    if (response.ok) {
-                        return response.clone().json();
-                    }
-                    throw new Error('failed');
-                }, networkError => console.log(networkError.message))
-                .then(jsonResponse => this.setState({
-                    articles: [...new Set([
-                        ...articles,
-                        ...jsonResponse.articles.filter(e => e.urlToImage),
-                    ])],
-                    page: page + 1,
-                    isLoading: false,
-                }))
-                .catch(e => console.log(e.message));
-        }, 1000);
+        try {
+            const result = await fetch(`/${value || pathname}`, myInit);
+            const data = await result.clone().json();
+            this.setState({
+              articles: [...new Set([
+                ...articles,
+                ...data.articles
+                  .filter(e => e.urlToImage)
+                  .filter(e => e.title.length > 40 && e.description.length > 80),
+              ])],
+              page: page + 1,
+              isLoading: false,
+            });
+        } catch (err) {
+            console.log(err.message);
+        }
     }
 
     componentDidMount = () => {
         this.loadData();
         window.addEventListener('scroll', this.onScroll, false);
-        this.setState({ scrolled: true });
     }
 
     componentWillUnmount = () => {
@@ -119,4 +119,5 @@ class NewsBox extends Component {
         );
     }
 }
+
 export default unmountHOC(NewsBox);
