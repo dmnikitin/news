@@ -24,12 +24,12 @@ export default class SourcesWrapper extends Component {
     render() {
         const { value } = this.state;
         return (
-            <React.Fragment>
-                <h2 style={styles.h2}> Get the latest articles by selected topics! </h2>
-                <SourcesBox loadData={this.loadData} />
-                <SourcesForm value={value} submit={this.handleSubmit} change={this.handleChange} />
-                <Footer />
-            </React.Fragment>
+          <React.Fragment>
+              <h2 style={styles.h2}> Get the latest articles by selected topics! </h2>
+              <SourcesBox loadData={this.loadData} />
+              <SourcesForm value={value} submit={this.handleSubmit} change={this.handleChange} />
+              <Footer />
+          </React.Fragment>
         );
     }
 }
