@@ -14,8 +14,13 @@ const styles = {
       flexDirection: 'row',
       color: 'black',
       fontSize: 18,
-      minHeight: '40px',
-      maxHeight: '40px',
+      height: '50px',
+      justifyContent: 'space-between',
+  },
+  button: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
   },
   span: {
       alignItems: 'center',

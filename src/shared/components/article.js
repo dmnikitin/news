@@ -33,8 +33,10 @@ function Article({ classes, item }) {
                 <Icon className={classNames(classes.icon, 'fa fa-twitter')} />
                </a>
             </Button>
-            <Button size="small" color="primary">
-               <a target="_blank" rel="noopener noreferrer" href={item.url}>Learn More</a>
+            <Button size="small" color="primary" className={classes.button}>
+               <a target="_blank" rel="noopener noreferrer" href={item.url}>
+                <Icon className={classNames(classes.icon, 'fa fa-angle-double-right')} />
+               </a>
             </Button>
          </CardActions>
         </Card>
