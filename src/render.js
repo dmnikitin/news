@@ -5,10 +5,15 @@ import App from './shared/app';
 import NewsBox from './shared/components/newsbox';
 
 export default function render(initialState, location, value) {
+    const context = {};
     const app = initialState === 'app'
-        ? <App />
+        ? (
+          <StaticRouter context={context}>
+              <App />
+          </StaticRouter>
+        )
         : (
-          <StaticRouter location={location}>
+          <StaticRouter location={location} context={context}>
               <NewsBox value={value} />
           </StaticRouter>
         );
