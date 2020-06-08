@@ -3,10 +3,9 @@ import templateRender from './templateRender';
 
 const router = require('express').Router();
 const fetch = require('node-fetch');
-const dotenv = require('dotenv');
 
-const { API_KEY } = dotenv.config().parsed;
 let url;
+const { API_KEY } = process.env;
 
 router.get(['/', '/favicon.ico'], (req, res) => {
   const app = ssr.default('app');
