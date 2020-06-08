@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 const { API_KEY } = dotenv.config().parsed;
 let url;
 
-router.get('/', (req, res) => {
+router.get(['/', '/favicon.ico'], (req, res) => {
   const app = ssr.default('app');
   const markup = templateRender(app);
   res.send(markup);
